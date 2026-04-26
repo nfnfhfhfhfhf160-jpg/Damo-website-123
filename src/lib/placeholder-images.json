@@ -1,3 +1,70 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "hero-living-room",
+      "description": "Elegant modern living room with deep forest green sofa",
+      "imageUrl": "https://picsum.photos/seed/furniture1/1200/800",
+      "imageHint": "living room modern"
+    },
+    {
+      "id": "hero-bedroom",
+      "description": "Minimalist luxury bedroom with wood accents",
+      "imageUrl": "https://picsum.photos/seed/furniture2/1200/800",
+      "imageHint": "bedroom luxury"
+    },
+    {
+      "id": "category-chair",
+      "description": "Modern wooden bar stool with sleek design",
+      "imageUrl": "https://picsum.photos/seed/chair1/600/800",
+      "imageHint": "bar stool"
+    },
+    {
+      "id": "category-sofa",
+      "description": "Contemporary beige reception sofa",
+      "imageUrl": "https://picsum.photos/seed/sofa1/800/600",
+      "imageHint": "modern sofa"
+    },
+    {
+      "id": "category-lighting",
+      "description": "Minimalist gold pendant light",
+      "imageUrl": "https://picsum.photos/seed/light1/800/600",
+      "imageHint": "pendant light"
+    },
+    {
+      "id": "product-1",
+      "description": "Modern Green Armchair",
+      "imageUrl": "https://picsum.photos/seed/p1/600/600",
+      "imageHint": "modern armchair"
+    },
+    {
+      "id": "product-2",
+      "description": "Nordic Dining Chair",
+      "imageUrl": "https://picsum.photos/seed/p2/600/600",
+      "imageHint": "dining chair"
+    },
+    {
+      "id": "product-3",
+      "description": "Minimalist Coffee Table",
+      "imageUrl": "https://picsum.photos/seed/p3/600/600",
+      "imageHint": "coffee table"
+    },
+    {
+      "id": "product-4",
+      "description": "Velvet Lounge Chair",
+      "imageUrl": "https://picsum.photos/seed/p4/600/600",
+      "imageHint": "velvet chair"
+    },
+    {
+      "id": "product-5",
+      "description": "Sleek Desk Lamp",
+      "imageUrl": "https://picsum.photos/seed/p5/600/600",
+      "imageHint": "desk lamp"
+    },
+    {
+      "id": "product-6",
+      "description": "Sectional Sofa Piece",
+      "imageUrl": "https://picsum.photos/seed/p6/600/600",
+      "imageHint": "sectional sofa"
+    }
+  ]
 }
