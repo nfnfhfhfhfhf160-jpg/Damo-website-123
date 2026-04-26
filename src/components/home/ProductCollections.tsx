@@ -2,25 +2,23 @@
 "use client"
 
 import React, { useState, useEffect } from 'react'
-import Image from 'next/image'
-import { Heart, Maximize2, Star, Timer } from 'lucide-react'
+import { Heart, Star, Timer, ShoppingCart } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
-import { PlaceHolderImages } from '@/lib/placeholder-images'
+import { motion, AnimatePresence } from 'framer-motion'
 
 const products = [
-  { id: 1, title: "Modern Green Armchair", price: 160.00, discountPrice: 80.00, rating: 4.9, discount: "50% off", img: 'product-1' },
-  { id: 2, title: "Nordic Dining Chair", price: 210.00, discountPrice: 189.00, rating: 4.8, discount: "10% off", img: 'product-2' },
-  { id: 3, title: "Minimalist Coffee Table", price: 300.00, discountPrice: 240.00, rating: 4.7, discount: "20% off", img: 'product-3' },
-  { id: 4, title: "Velvet Lounge Chair", price: 450.00, discountPrice: 315.00, rating: 5.0, discount: "30% off", img: 'product-4' },
-  { id: 5, title: "Sleek Desk Lamp", price: 90.00, discountPrice: 72.00, rating: 4.6, discount: "20% off", img: 'product-5' },
-  { id: 6, title: "Sectional Sofa Piece", price: 1200.00, discountPrice: 960.00, rating: 4.9, discount: "20% off", img: 'product-6' }
+  { id: 1, title: "Emerald Velvet Armchair", price: 320.00, discountPrice: 160.00, rating: 4.9, discount: "50% off", img: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&q=80' },
+  { id: 2, title: "Scandinavian Oak Chair", price: 210.00, discountPrice: 189.00, rating: 4.8, discount: "10% off", img: 'https://images.unsplash.com/photo-1592078615290-033ee584e267?auto=format&fit=crop&q=80' },
+  { id: 3, title: "Minimalist Brass Light", price: 150.00, discountPrice: 120.00, rating: 4.7, discount: "20% off", img: 'https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&q=80' },
+  { id: 4, title: "Linen Sectional Sofa", price: 1800.00, discountPrice: 1260.00, rating: 5.0, discount: "30% off", img: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&q=80' },
+  { id: 5, title: "Walnut Coffee Table", price: 450.00, discountPrice: 360.00, rating: 4.6, discount: "20% off", img: 'https://images.unsplash.com/photo-1533090161767-e6ffed986c88?auto=format&fit=crop&q=80' },
 ]
 
 export const ProductCollections = () => {
   const [activeTab, setActiveTab] = useState('All Products')
-  const tabs = ['All Products', 'Latest Products', 'Best Sellers', 'Featured Products']
-  const [timeLeft, setTimeLeft] = useState({ days: 5, hours: 12, mins: 30, secs: 25 })
+  const tabs = ['All Products', 'Latest Products', 'Best Sellers']
+  const [timeLeft, setTimeLeft] = useState({ days: 2, hours: 14, mins: 45, secs: 30 })
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -36,23 +34,35 @@ export const ProductCollections = () => {
   }, [])
 
   return (
-    <section className="px-6 md:px-12 py-24 bg-white">
+    <section className="px-6 md:px-12 py-24 bg-background">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center space-y-4 mb-16">
-          <span className="text-accent font-bold tracking-[0.2em] uppercase text-sm">- Our Products</span>
-          <h2 className="text-4xl md:text-5xl font-headline font-extrabold text-primary">Our Products Collections</h2>
+        <div className="text-center space-y-6 mb-20">
+          <motion.span 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            className="text-accent font-black tracking-[0.3em] uppercase text-xs"
+          >
+            - Curated Selection
+          </motion.span>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="text-5xl md:text-6xl font-headline font-black text-primary tracking-tight"
+          >
+            Our Products Collections
+          </motion.h2>
         </div>
 
         {/* Filters */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
+        <div className="flex flex-wrap justify-center gap-4 mb-16">
           {tabs.map(tab => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
-              className={`px-8 py-3 rounded-full text-sm font-bold transition-all duration-300 ${
+              className={`px-10 py-4 rounded-full text-sm font-black tracking-tight transition-all duration-500 border-2 ${
                 activeTab === tab 
-                  ? 'bg-primary text-white shadow-lg' 
-                  : 'bg-secondary text-primary hover:bg-border/20'
+                  ? 'bg-primary text-white border-primary shadow-xl shadow-primary/20 scale-110' 
+                  : 'bg-white text-primary border-transparent hover:border-accent hover:text-accent'
               }`}
             >
               {tab}
@@ -61,88 +71,103 @@ export const ProductCollections = () => {
         </div>
 
         {/* Product Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+        <motion.div 
+          layout
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10"
+        >
           {products.map((p, idx) => {
-            const productImg = PlaceHolderImages.find(img => img.id === p.img);
-            
-            // Inject the Flash Sale timer card at position 3 (idx 2)
+            // Inject Flash Sale Card at specific index
             if (idx === 2) {
               return (
-                <div key="flash-sale" className="bg-primary rounded-3xl p-8 flex flex-col justify-between text-white border border-primary/20 shadow-2xl relative overflow-hidden group">
-                  <div className="absolute -right-8 -top-8 w-32 h-32 bg-accent rounded-full opacity-20 group-hover:scale-150 transition-transform duration-1000" />
-                  <div className="space-y-6 z-10">
-                    <div className="bg-accent/20 text-accent p-3 rounded-2xl w-fit">
-                      <Timer className="w-8 h-8" />
+                <motion.div 
+                  key="flash-sale"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  className="bg-primary rounded-[3rem] p-10 flex flex-col justify-between text-white border-4 border-accent shadow-2xl relative overflow-hidden group h-[500px]"
+                >
+                  <div className="absolute -right-16 -top-16 w-48 h-48 bg-accent rounded-full opacity-20 group-hover:scale-150 transition-transform duration-1000" />
+                  <div className="space-y-8 z-10">
+                    <div className="bg-accent/30 text-accent p-4 rounded-[2rem] w-fit shadow-xl backdrop-blur-md">
+                      <Timer className="w-10 h-10" />
                     </div>
                     <div>
-                      <h3 className="text-3xl font-headline font-extrabold">Flash Sale</h3>
-                      <p className="opacity-80 text-sm font-medium mt-1">Limited time only. Grab your favorites now!</p>
+                      <h3 className="text-4xl font-headline font-black tracking-tighter">Flash Sale</h3>
+                      <p className="opacity-80 text-sm font-bold mt-2 leading-relaxed">Exclusive discounts on premium collections.</p>
                     </div>
-                    <div className="grid grid-cols-4 gap-2">
+                    <div className="grid grid-cols-4 gap-3">
                       {[
                         { val: timeLeft.days, unit: 'Days' },
-                        { val: timeLeft.hours, unit: 'Hours' },
-                        { val: timeLeft.mins, unit: 'Mins' },
+                        { val: timeLeft.hours, unit: 'Hrs' },
+                        { val: timeLeft.mins, unit: 'Min' },
                         { val: timeLeft.secs, unit: 'Sec' }
                       ].map((t, i) => (
-                        <div key={i} className="bg-white/10 backdrop-blur-md rounded-xl p-2 text-center border border-white/5">
-                          <div className="text-lg font-bold">{String(t.val).padStart(2, '0')}</div>
-                          <div className="text-[10px] uppercase tracking-tighter opacity-60 font-bold">{t.unit}</div>
+                        <div key={i} className="bg-white/10 backdrop-blur-lg rounded-2xl p-3 text-center border border-white/10">
+                          <div className="text-xl font-black">{String(t.val).padStart(2, '0')}</div>
+                          <div className="text-[9px] uppercase tracking-widest opacity-60 font-black mt-1">{t.unit}</div>
                         </div>
                       ))}
                     </div>
                   </div>
-                  <Button className="w-full mt-6 bg-accent hover:bg-white hover:text-accent text-white font-bold rounded-2xl py-6 transition-all">
-                    Shop All Sale
+                  <Button className="w-full mt-8 bg-accent hover:bg-white hover:text-accent text-white font-black rounded-2xl py-8 transition-all duration-500 uppercase tracking-widest text-xs shadow-xl">
+                    Grab Offer
                   </Button>
-                </div>
+                </motion.div>
               )
             }
 
             return (
-              <div key={p.id} className="group animate-fade-in" style={{ animationDelay: `${idx * 0.1}s` }}>
-                {/* Image Area */}
-                <div className="relative aspect-square bg-secondary rounded-3xl overflow-hidden mb-6 border border-border/10">
-                  <Image 
-                    src={productImg?.imageUrl || ''} 
-                    alt={p.title} 
-                    fill 
-                    className="object-contain p-8 group-hover:scale-110 transition-transform duration-500"
-                    data-ai-hint={productImg?.imageHint}
-                  />
-                  <Badge className="absolute top-5 left-5 bg-primary text-white hover:bg-primary font-bold px-3 py-1.5 rounded-full text-xs">
-                    {p.discount}
-                  </Badge>
-                  <div className="absolute top-5 right-5 flex flex-col space-y-2 translate-x-12 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-300">
-                    <button className="bg-white p-3 rounded-full shadow-lg hover:bg-accent hover:text-white transition-colors">
-                      <Heart className="w-4 h-4" />
-                    </button>
-                    <button className="bg-white p-3 rounded-full shadow-lg hover:bg-accent hover:text-white transition-colors">
-                      <Maximize2 className="w-4 h-4" />
+              <AnimatePresence mode="popLayout" key={p.id}>
+                <motion.div 
+                  layout
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.8 }}
+                  transition={{ duration: 0.5 }}
+                  className="group"
+                >
+                  {/* Image Area */}
+                  <div className="relative aspect-[4/5] bg-white rounded-[2.5rem] overflow-hidden mb-8 border border-border/10 shadow-sm hover:shadow-2xl transition-all duration-500">
+                    <img 
+                      src={p.img} 
+                      alt={p.title} 
+                      referrerPolicy="no-referrer"
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    />
+                    <Badge className="absolute top-6 left-6 bg-primary text-white font-black px-4 py-2 rounded-full text-[10px] uppercase tracking-widest shadow-lg">
+                      {p.discount}
+                    </Badge>
+                    <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                       <Button className="rounded-full bg-white text-primary hover:bg-accent hover:text-white px-8 py-6 font-black uppercase text-xs tracking-widest shadow-2xl transition-all scale-90 group-hover:scale-100">
+                          <ShoppingCart className="w-4 h-4 mr-2" />
+                          Add to Cart
+                       </Button>
+                    </div>
+                    <button className="absolute top-6 right-6 bg-white/90 backdrop-blur-sm p-4 rounded-full shadow-xl hover:bg-accent hover:text-white transition-all duration-300 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0">
+                      <Heart className="w-5 h-5" />
                     </button>
                   </div>
-                </div>
 
-                {/* Info Area */}
-                <div className="space-y-3 px-2">
-                  <div className="flex items-center space-x-1 text-accent">
-                    {[1, 2, 3, 4, 5].map(s => (
-                      <Star key={s} className={`w-3.5 h-3.5 ${s <= Math.floor(p.rating) ? 'fill-current' : 'opacity-30'}`} />
-                    ))}
-                    <span className="text-primary font-bold text-xs ml-1">{p.rating}</span>
+                  {/* Info Area */}
+                  <div className="space-y-4 px-2 text-center">
+                    <div className="flex items-center justify-center space-x-1 text-accent">
+                      {[1, 2, 3, 4, 5].map(s => (
+                        <Star key={s} className={`w-4 h-4 ${s <= Math.floor(p.rating) ? 'fill-current' : 'opacity-30'}`} />
+                      ))}
+                      <span className="text-primary font-black text-xs ml-2">{p.rating}</span>
+                    </div>
+                    <h3 className="font-headline font-black text-primary group-hover:text-accent transition-colors duration-300 text-xl tracking-tight leading-none">
+                      {p.title}
+                    </h3>
+                    <div className="flex items-center justify-center space-x-4">
+                      <span className="text-2xl font-headline font-black text-primary tracking-tighter">${p.discountPrice.toFixed(2)}</span>
+                      <span className="text-muted-foreground line-through text-sm font-bold opacity-40">${p.price.toFixed(2)}</span>
+                    </div>
                   </div>
-                  <h3 className="font-headline font-bold text-primary group-hover:text-accent transition-colors cursor-pointer text-lg leading-tight">
-                    {p.title}
-                  </h3>
-                  <div className="flex items-center space-x-3">
-                    <span className="text-xl font-headline font-extrabold text-primary">${p.discountPrice.toFixed(2)}</span>
-                    <span className="text-muted-foreground line-through text-sm font-medium opacity-60">${p.price.toFixed(2)}</span>
-                  </div>
-                </div>
-              </div>
+                </motion.div>
+              </AnimatePresence>
             )
           })}
-        </div>
+        </motion.div>
       </div>
     </section>
   )
