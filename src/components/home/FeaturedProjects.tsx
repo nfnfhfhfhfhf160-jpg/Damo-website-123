@@ -39,10 +39,10 @@ export const FeaturedProjects = () => {
           {projects.map((p, idx) => (
             <motion.div 
               key={idx}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: idx * 0.1 }}
-              viewport={{ once: true }}
+              transition={{ duration: 0.3, delay: idx * 0.05 }}
+              viewport={{ once: true, margin: "-50px" }}
               className="group cursor-pointer"
             >
               <div className="relative aspect-[3/4] rounded-[2.5rem] overflow-hidden mb-6">
