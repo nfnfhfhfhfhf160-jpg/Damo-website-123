@@ -22,10 +22,16 @@ export const Header = () => {
         </div>
 
         <ul className="hidden lg:flex items-center space-x-10">
-          {['Home', 'Studio', 'Projects', 'Showrooms', 'Contact'].map((item, idx) => (
-            <li key={item} className="relative group">
-              <a href={`#${item.toLowerCase()}`} className={`text-sm font-bold tracking-tight hover:text-accent transition-colors ${idx === 0 ? 'text-accent' : 'text-primary'}`}>
-                {item}
+          {[
+            { name: 'Home', href: '#' },
+            { name: 'Studio', href: '#studio' },
+            { name: 'Projects', href: '#projects' },
+            { name: 'Showrooms', href: '#showrooms' },
+            { name: 'Contact', href: '#contact' }
+          ].map((item, idx) => (
+            <li key={item.name} className="relative group">
+              <a href={item.href} className={`text-sm font-bold tracking-tight hover:text-accent transition-colors ${idx === 0 ? 'text-accent' : 'text-primary'}`}>
+                {item.name}
               </a>
               {idx === 0 && (
                 <motion.div 

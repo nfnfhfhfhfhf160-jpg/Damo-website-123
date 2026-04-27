@@ -6,7 +6,6 @@ import { ValueProp } from '@/components/home/ValueProp'
 import { CategoryGrid } from '@/components/home/CategoryGrid'
 import { FeaturedProjects } from '@/components/home/FeaturedProjects'
 import { Showrooms } from '@/components/home/Showrooms'
-import { GenAITool } from '@/components/home/GenAITool'
 import { Footer } from '@/components/home/Footer'
 
 export default function Home() {
@@ -17,7 +16,6 @@ export default function Home() {
       <ValueProp />
       <CategoryGrid />
       <FeaturedProjects />
-      <GenAITool />
       <Showrooms />
       <Footer />
     </main>
