@@ -45,10 +45,10 @@ export const Showrooms = () => {
           {showrooms.map((room, idx) => (
             <motion.div 
               key={idx}
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: idx * 0.08 }}
-              viewport={{ once: true, margin: "-50px" }}
+              initial={{ opacity: 0, y: 40, scale: 0.97 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 0.6, delay: idx * 0.15, ease: [0.25, 0.46, 0.45, 0.94] }}
+              viewport={{ once: true, margin: "-100px" }}
               className="group bg-secondary rounded-[3rem] overflow-hidden border border-border/40 hover:shadow-2xl transition-all duration-500"
             >
               <div className="aspect-video relative overflow-hidden">
