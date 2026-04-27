@@ -82,6 +82,7 @@ export const CategoryGrid = () => {
                 src={categories[0].img} 
                 alt="Chairs category" 
                 referrerPolicy="no-referrer"
+                loading="eager"
                 className="w-full h-full object-cover rounded-[2rem] group-hover:scale-105 transition-transform duration-[1.5s]"
               />
             </div>
@@ -90,15 +91,15 @@ export const CategoryGrid = () => {
           {/* Right Column Grid */}
           <div className="grid grid-cols-1 gap-10">
             {categories.slice(1).map((cat) => (
-              <motion.div key={cat.id} variants={item} className="bg-background rounded-[3rem] p-10 flex items-center group overflow-hidden border border-border/20 shadow-sm hover:shadow-2xl transition-all duration-500">
-                <div className="w-1/2 space-y-6 z-10">
-                  <div className="space-y-4">
-                    <Badge className="bg-primary text-white rounded-full px-5 py-1.5 font-black text-[10px] uppercase tracking-widest">
+              <motion.div key={cat.id} variants={item} className="bg-background rounded-[2rem] md:rounded-[3rem] p-6 md:p-10 flex flex-col md:flex-row items-start md:items-center gap-6 group overflow-hidden border border-border/20 shadow-sm hover:shadow-2xl transition-all duration-500">
+                <div className="w-full md:w-1/2 space-y-4 md:space-y-6 z-10">
+                  <div className="space-y-3 md:space-y-4">
+                    <Badge className="bg-primary text-white rounded-full px-4 md:px-5 py-1 md:py-1.5 font-black text-[9px] md:text-[10px] uppercase tracking-widest">
                       {cat.items}
                     </Badge>
-                    <h3 className="text-4xl font-headline font-black text-primary tracking-tighter">{cat.title}</h3>
+                    <h3 className="text-3xl md:text-4xl font-headline font-black text-primary tracking-tighter">{cat.title}</h3>
                   </div>
-                  <ul className="space-y-3">
+                  <ul className="space-y-2 md:space-y-3">
                     {cat.list.map((listItem) => (
                       <li key={listItem} className="text-primary font-bold text-xs flex items-center group/item hover:text-accent transition-colors duration-300 cursor-pointer">
                         <div className="w-2 h-2 bg-accent rounded-full mr-3 opacity-60 group-hover/item:opacity-100 transition-all" />
@@ -107,12 +108,13 @@ export const CategoryGrid = () => {
                     ))}
                   </ul>
                 </div>
-                <div className="w-1/2 relative h-[250px]">
+                <div className="w-full md:w-1/2 relative h-[200px] md:h-[250px]">
                   <img 
                     src={cat.img} 
                     alt={cat.title} 
                     referrerPolicy="no-referrer"
-                    className="w-full h-full object-cover rounded-[2rem] group-hover:scale-110 transition-transform duration-[1.5s]"
+                    loading="eager"
+                    className="w-full h-full object-cover rounded-[1.5rem] md:rounded-[2rem] group-hover:scale-110 transition-transform duration-[1.5s]"
                   />
                 </div>
               </motion.div>

@@ -13,7 +13,7 @@ export const Header = () => {
         Experience Luxury: Visit our new <span className="text-accent font-bold">MAYFAIR STUDIO</span> in London.
       </div>
 
-      <nav className="bg-white/80 backdrop-blur-md border-b border-border/40 py-5 px-6 md:px-12 flex justify-between items-center">
+      <nav className="bg-white/80 backdrop-blur-md border-b border-border/40 py-4 px-4 md:px-12 flex justify-between items-center">
         <div className="flex items-center space-x-2 group cursor-pointer">
           <div className="bg-primary p-1.5 rounded-lg group-hover:bg-accent transition-colors duration-300">
             <Leaf className="w-6 h-6 text-white" />
@@ -51,7 +51,7 @@ export const Header = () => {
               +1 (212) 555-0123
             </div>
           </div>
-          <Button className="rounded-full bg-accent hover:bg-primary text-white px-6 font-bold text-xs uppercase tracking-widest transition-all">
+          <Button className="rounded-full bg-accent hover:bg-primary text-white px-3 md:px-6 py-2 font-bold text-[10px] md:text-xs uppercase tracking-wider md:tracking-widest transition-all">
             Book Consultation
           </Button>
         </div>

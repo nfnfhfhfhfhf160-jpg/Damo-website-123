@@ -56,6 +56,7 @@ export const Showrooms = () => {
                   src={room.img} 
                   alt={room.name} 
                   referrerPolicy="no-referrer"
+                  loading="eager"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
                 <div className="absolute top-6 left-6 bg-primary text-white px-4 py-2 rounded-full text-[10px] font-black uppercase tracking-widest">

@@ -80,11 +80,13 @@ export const Hero = () => {
                 src={IMAGE_ASSETS.HERO_MAIN} 
                 alt="Elementa Studio Main" 
                 referrerPolicy="no-referrer"
+                loading="eager"
+                fetchPriority="high"
                 className="w-full h-full object-cover"
               />
-              <div className="absolute bottom-8 left-8 right-8 bg-white/95 backdrop-blur-sm p-6 rounded-3xl shadow-2xl border border-border/20">
-                <h3 className="font-headline font-black text-primary text-xl tracking-tight">The Heritage Collection</h3>
-                <p className="text-xs text-muted-foreground font-bold tracking-widest uppercase">Visit our Flagship Studio</p>
+              <div className="absolute bottom-4 md:bottom-8 left-4 md:left-8 right-4 md:right-8 bg-white/95 backdrop-blur-sm p-4 md:p-6 rounded-2xl md:rounded-3xl shadow-2xl border border-border/20">
+                <h3 className="font-headline font-black text-primary text-base md:text-xl tracking-tight">The Heritage Collection</h3>
+                <p className="text-[10px] md:text-xs text-muted-foreground font-bold tracking-widest uppercase">Visit our Flagship Studio</p>
               </div>
             </div>
             <div className="absolute bottom-0 left-0 w-[65%] h-[55%] rounded-[3rem] overflow-hidden shadow-2xl border-[10px] border-white z-20">
@@ -92,6 +94,7 @@ export const Hero = () => {
                 src={IMAGE_ASSETS.SOFA_CATEGORY} 
                 alt="Craftsmanship detail" 
                 referrerPolicy="no-referrer"
+                loading="eager"
                 className="w-full h-full object-cover"
               />
             </div>
