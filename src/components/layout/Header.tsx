@@ -1,10 +1,10 @@
-
 "use client"
 
 import React from 'react'
-import { Search, ShoppingBag, User, Leaf, Phone } from 'lucide-react'
+import { Leaf, Phone } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
+import { StatusBadge } from '@/components/shared/StatusBadge'
 
 export const Header = () => {
   return (
@@ -44,9 +44,12 @@ export const Header = () => {
         </ul>
 
         <div className="flex items-center space-x-4">
-          <div className="hidden md:flex items-center text-primary font-black text-sm mr-4">
-            <Phone className="w-4 h-4 mr-2 text-accent" />
-            +1 (212) 555-0123
+          <div className="hidden md:flex items-center gap-4">
+            <StatusBadge />
+            <div className="flex items-center text-primary font-black text-sm">
+              <Phone className="w-4 h-4 mr-2 text-accent" />
+              +1 (212) 555-0123
+            </div>
           </div>
           <Button className="rounded-full bg-accent hover:bg-primary text-white px-6 font-bold text-xs uppercase tracking-widest transition-all">
             Book Consultation

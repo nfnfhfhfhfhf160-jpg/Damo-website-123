@@ -1,4 +1,3 @@
-
 "use client"
 
 import React from 'react'
@@ -6,6 +5,9 @@ import { Button } from '@/components/ui/button'
 import { ArrowRight, Star, PhoneCall } from 'lucide-react'
 import { IMAGE_ASSETS } from '@/lib/image-assets'
 import { motion } from 'framer-motion'
+import { StatusBadge } from '@/components/shared/StatusBadge'
+import { Badge } from '@/components/ui/badge'
+
 
 export const Hero = () => {
   return (
@@ -20,9 +22,12 @@ export const Hero = () => {
           className="space-y-10"
         >
           <div className="space-y-6">
-            <Badge className="bg-accent/10 text-accent border-none px-4 py-1.5 rounded-full font-bold text-xs uppercase tracking-widest">
-              Established 1998
-            </Badge>
+            <div className="flex items-center gap-4">
+              <Badge className="bg-accent/10 text-accent border-none px-4 py-1.5 rounded-full font-bold text-xs uppercase tracking-widest">
+                Established 1998
+              </Badge>
+              <StatusBadge />
+            </div>
             <h1 className="text-5xl md:text-7xl font-headline font-extrabold text-primary leading-[1.05] tracking-tight">
               Crafting <span className="text-accent italic">Legacy</span> Spaces & Timeless Furniture
             </h1>
@@ -96,4 +101,3 @@ export const Hero = () => {
     </section>
   )
 }
-import { Badge } from '@/components/ui/badge'
